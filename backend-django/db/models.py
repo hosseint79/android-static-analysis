@@ -7,3 +7,8 @@ class Project(models.Model):
     problemsList= models.JSONField(null=True)
     fileName=models.CharField(null=True,max_length=200)
 
+class Rule(models.Model):
+    title= models.CharField(max_length=500)
+    description= models.CharField(null=True,max_length=500)
+    severity= models.CharField(null=True,max_length=100)
+    Regex=models.CharField(null=True,max_length=700)

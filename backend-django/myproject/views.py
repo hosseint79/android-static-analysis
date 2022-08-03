@@ -11,7 +11,7 @@ import json
 @csrf_exempt 
 def upload_file(request):
     if request.method == 'POST':
-        file = request.FILES['myfile'] # this is my file
+        file = request.FILES['file'] # this is my file
 
         folder='files/'
         fs = FileSystemStorage(location=folder) #defaults to   MEDIA_ROOT  
@@ -36,10 +36,15 @@ def scan(request):
         "name":"ali"
     }]
     # scan file for generate
+
+    final = main("files/" + request.GET.get("fileName"))
+
+
     Project.objects.create(
         fileName="files/" + request.GET.get("fileName"),
-        problemsList=data1
+        problemsList=final
     )
-    main("files/" + request.GET.get("fileName"))
 
-    return HttpResponse("salam salar")
+    return JsonResponse({
+            "result":final,
+         })

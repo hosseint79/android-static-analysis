@@ -37,3 +37,5 @@ def main(fileName):
 		init.scanning()
 	finally:
 		init.cleanup()
+		
+	return init.getFinalResult()

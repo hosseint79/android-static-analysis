@@ -27,7 +27,9 @@ class util:
 						for line in handle.readlines():
 							mo = matcher.search(line)
 							if mo:
-								found.append(mo.group() + " ... " + filepath)
+								found.append(mo.group())
+								found.append(filepath)
+
 					except Exception:
 						pass
 		return sorted(list(set(found)))

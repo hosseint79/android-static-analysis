@@ -25,7 +25,7 @@ class APKLeaks:
 	def __init__(self, fileName):
 		self.apk = None
 		self.file = os.path.realpath(fileName)
-		self.json = None
+		self.json = True
 		self.disarg = None
 		self.prefix = "apkleaks-"
 		self.tempdir = tempfile.mkdtemp(prefix=self.prefix)
@@ -110,7 +110,7 @@ class APKLeaks:
 						continue
 					secret = secret[len("'"):-len("'")]
 				stdout = ("- %s" % (secret))
-				print(stdout)
+				# print(stdout)
 				self.fileout.write("%s" % (stdout + "\n" if self.json is False else ""))
 			self.fileout.write("%s" % ("\n" if self.json is False else ""))
 			self.out_json["results"].append({"name": name, "matches": matches})
@@ -138,7 +138,7 @@ class APKLeaks:
 						thread.start()
 					except KeyboardInterrupt:
 						sys.exit(util.writeln("\n** Interrupted. Aborting...", col.FAIL))
-		# print("result",self.out_json)
+		print("result",self.out_json)
 
 	def cleanup(self):
 		print("self.tempdir",self.tempdir)
@@ -151,3 +151,5 @@ class APKLeaks:
 			self.fileout.close()
 			os.remove(self.output)
 			util.writeln("\n** Done with nothing. ¯\\_(ツ)_/¯", col.WARNING)
+	def getFinalResult(self):
+		return self.out_json

@@ -1,8 +1,12 @@
+from unittest import result
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse , JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.core.files.storage import FileSystemStorage
 from myproject.leak.apkleaks.cli import main
+from  db.models import Project
+import json
+
 
 @csrf_exempt 
 def upload_file(request):
@@ -26,7 +30,16 @@ def upload_file(request):
 
 @csrf_exempt 
 def scan(request):
+    data1 = [{
+        "name":"ali"
+    },{
+        "name":"ali"
+    }]
     # scan file for generate
+    Project.objects.create(
+        fileName="files/" + request.GET.get("fileName"),
+        problemsList=data1
+    )
     main("files/" + request.GET.get("fileName"))
-    
+
     return HttpResponse("salam salar")

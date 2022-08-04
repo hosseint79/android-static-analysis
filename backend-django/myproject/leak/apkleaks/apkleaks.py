@@ -103,16 +103,16 @@ class APKLeaks:
 		if len(matches):
 			stdout = ("[%s]" % (name))
 			util.writeln("\n" + stdout, col.OKGREEN)
-			self.fileout.write("%s" % (stdout + "\n" if self.json is False else ""))
-			for secret in matches:
-				if name == "LinkFinder":
-					if re.match(r"^.(L[a-z]|application|audio|fonts|image|kotlin|layout|multipart|plain|text|video).*\/.+", secret) is not None:
-						continue
-					secret = secret[len("'"):-len("'")]
-				stdout = ("- %s" % (secret))
-				# print(stdout)
-				self.fileout.write("%s" % (stdout + "\n" if self.json is False else ""))
-			self.fileout.write("%s" % ("\n" if self.json is False else ""))
+			# self.fileout.write("%s" % (stdout + "\n" if self.json is False else ""))
+			# for secret in matches:
+			# 	if name == "LinkFinder":
+			# 		if re.match(r"^.(L[a-z]|application|audio|fonts|image|kotlin|layout|multipart|plain|text|video).*\/.+", secret) is not None:
+			# 			continue
+			# 		secret = secret[len("'"):-len("'")]
+			# 	stdout = ("- %s" % (secret))
+			# 	# print(stdout)
+			# 	self.fileout.write("%s" % (stdout + "\n" if self.json is False else ""))
+			# self.fileout.write("%s" % ("\n" if self.json is False else ""))
 			self.out_json["results"].append({"name": name, "matches": matches})
 			self.scanned = True
 

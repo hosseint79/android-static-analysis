@@ -4,7 +4,7 @@ from django.http import HttpRequest, HttpResponse , JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.core.files.storage import FileSystemStorage
 from myproject.leak.apkleaks.cli import main
-from  db.models import Project
+from  db.models import Project, Rule
 import json
 
 
@@ -30,21 +30,33 @@ def upload_file(request):
 
 @csrf_exempt 
 def scan(request):
-    data1 = [{
-        "name":"ali"
-    },{
-        "name":"ali"
-    }]
-    # scan file for generate
-
-    final = main("files/" + request.GET.get("fileName"))
-
+    i = main("files/" + request.GET.get("fileName"))
 
     Project.objects.create(
-        fileName="files/" + request.GET.get("fileName"),
-        problemsList=final
+        fileName= request.GET.get("fileName"),
+        problemsList=i 
     )
 
     return JsonResponse({
-            "result":final,
-         })
+        "result":i,
+    })
+
+@csrf_exempt 
+def scan_details(request):
+    getData = Project.objects.get(id=request.GET.get("id"))
+    getRules = Rule.objects.all()
+
+    i = getData.problemsList
+    newarr = []
+    for item in i["results"] :
+        temp = item
+        for rule in getRules:
+            if rule.title == item["name"]:
+                temp["description"] = rule.description
+                temp["severity"] =  rule.severity         
+        newarr.append(temp)
+
+
+    return JsonResponse({
+        "result":newarr,
+    })

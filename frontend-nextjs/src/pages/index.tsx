@@ -27,7 +27,7 @@ const Home: NextPage = () => {
   }
 
   return (
-   <div>
+   <div className='bg-red-400 w-full h-60'>
       <input type="file" onChange={onchangeHandle}/>
       <button onClick={handleClick}> click </button>
       {

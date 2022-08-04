@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: "iranYekan";
+    src: url("/fonts/iranYekan/IRANYekanRegular.ttf");
+  }
+
+
+html{
+    font-family: iranYekan;
+}
 
 .loader {
     width: 25px;

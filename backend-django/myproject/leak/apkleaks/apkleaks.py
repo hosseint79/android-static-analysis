@@ -39,7 +39,6 @@ class APKLeaks:
 		logging.config.dictConfig({"version": 1, "disable_existing_loggers": True})
 
 	def apk_info(self):
-		print("aaaaaaaaaaaaaaaaaaaaaaa",APK(self.file))
 		return APK(self.file)
 
 	def dependencies(self):
@@ -138,10 +137,10 @@ class APKLeaks:
 						thread.start()
 					except KeyboardInterrupt:
 						sys.exit(util.writeln("\n** Interrupted. Aborting...", col.FAIL))
-		print("result",self.out_json)
+		
 
 	def cleanup(self):
-		print("self.tempdir",self.tempdir)
+	
 		shutil.rmtree(self.tempdir)
 		if self.scanned:
 			self.fileout.write("%s" % (json.dumps(self.out_json, indent=4) if self.json else ""))

@@ -6,7 +6,7 @@ from django.core.files.storage import FileSystemStorage
 from myproject.leak.apkleaks.cli import main
 from  db.models import Project, Rule
 import json
-
+from django.core.paginator import Paginator
 
 @csrf_exempt 
 def upload_file(request):
@@ -41,22 +41,35 @@ def scan(request):
         "result":i,
     })
 
+
+
 @csrf_exempt 
 def scan_details(request):
     getData = Project.objects.get(id=request.GET.get("id"))
+    page = request.GET.get("page")
+    print(page)
     getRules = Rule.objects.all()
 
     i = getData.problemsList
     newarr = []
     for item in i["results"] :
-        temp = item
-        for rule in getRules:
-            if rule.title == item["name"]:
-                temp["description"] = rule.description
-                temp["severity"] =  rule.severity         
-        newarr.append(temp)
+        
+
+        for match in item["matches"] :
+            temp = match
+            pass
+
+            for rule in getRules:
+                if rule.title == item["name"]:
+                    temp["description"] = rule.description
+                    temp["severity"] =  rule.severity    
+                    temp["name"] =  item["name"]  
+
+            newarr.append(temp)
+
+    p = Paginator(newarr, 20)
 
 
     return JsonResponse({
-        "result":newarr,
+        "result":p.page(page).object_list,
     })

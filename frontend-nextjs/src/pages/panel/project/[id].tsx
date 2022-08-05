@@ -3,7 +3,8 @@ import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 import { groupBy } from 'lodash';
 import { AccardionItem } from '../../../components/Accardion/Accardion';
-
+import { Table } from '../../../components/common/Table/Table';
+import { Layout } from '../../../components/Layout/Layout';
 
 function Page() {
     const [data, setData] = useState([]);
@@ -25,59 +26,45 @@ function Page() {
     }, [router.isReady]);
 
     let final = groupBy(data, 'name');
-
+    const column = ['نام', 'آدرس فایل', 'حساسیت', 'عملیات'];
     return (
-        <div>
-            {Object.keys(final).map((name: any) => {
-                return (
-                    <>
-                        <AccardionItem key={name} item={name}>
-                            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                    <tr>
-                                        <th scope="col" className="py-3 px-6">
-                                            نام
-                                        </th>
-                                        <th scope="col" className="py-3 px-6">
-                                        آدرس فایل
-                                        </th>
-                                        <th scope="col" className="py-3 px-6">
-                                           حساسیت
-                                        </th>
-                                        <th scope="col" className="py-3 px-6">
-                                            عملیات
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {final[name].map((match:any) => {
-                                        return (
-                                            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                <th
-                                                    scope="row"
-                                                    className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                                                >
-                                                    {match.name}
-                                                </th>
-                                                <td className="py-4 px-6">
-                                                {match.severity}
-                                                </td>
-                                                <td className="py-4 px-6">
-                                                    {match.path}
-                                                </td>
-                                                <td className="py-4 px-6">
-                                                    details
-                                                </td>
-                                            </tr>
-                                        );
-                                    })}
-                                </tbody>
-                            </table>
-                        </AccardionItem>
-                    </>
-                );
-            })}
-        </div>
+        <Layout>
+            <div className="bg-[#16151C] min-h-screen">
+                {Object.keys(final).map((name: any) => {
+                    return (
+                        <>
+                            <AccardionItem key={name} title={name}>
+                                <Table column={column}>
+                                    <>
+                                        {final[name].map((match: any) => {
+                                            return (
+                                                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                    <th
+                                                        scope="row"
+                                                        className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                                                    >
+                                                        {match.name}
+                                                    </th>
+                                                    <td className="py-4 px-6">
+                                                        {match.severity}
+                                                    </td>
+                                                    <td className="py-4 px-6">
+                                                        {match.path}
+                                                    </td>
+                                                    <td className="py-4 px-6">
+                                                        details
+                                                    </td>
+                                                </tr>
+                                            );
+                                        })}
+                                    </>
+                                </Table>
+                            </AccardionItem>
+                        </>
+                    );
+                })}
+            </div>
+        </Layout>
     );
 }
 

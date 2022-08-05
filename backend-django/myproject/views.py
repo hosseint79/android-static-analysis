@@ -30,15 +30,16 @@ def upload_file(request):
 
 @csrf_exempt 
 def scan(request):
-    i = main("files/" + request.GET.get("fileName"))
 
-    Project.objects.create(
+    scanResult = main("files/" + request.GET.get("fileName"))
+
+    createResult = Project.objects.create(
         fileName= request.GET.get("fileName"),
-        problemsList=i 
+        problemsList=  scanResult
     )
 
     return JsonResponse({
-        "result":i,
+        "result":createResult.id,
     })
 
 

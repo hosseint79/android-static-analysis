@@ -48,7 +48,9 @@ def scan(request):
 def scan_details(request):
     getData = Project.objects.get(id=request.GET.get("id"))
     page = request.GET.get("page")
-    print(page)
+    step = request.GET.get("step")
+
+    
     getRules = Rule.objects.all()
 
     i = getData.problemsList
@@ -68,9 +70,10 @@ def scan_details(request):
 
             newarr.append(temp)
 
-    p = Paginator(newarr, 20)
+    p = Paginator(newarr, step)
 
 
     return JsonResponse({
         "result":p.page(page).object_list,
+        "pageCount": p.num_pages
     })

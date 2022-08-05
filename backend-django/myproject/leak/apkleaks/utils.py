@@ -29,7 +29,7 @@ class util:
 									if mo:
 										f = {}
 										f["value"] = mo.group()
-										f["path"] = filepath
+										f["path"] = "sources" + filepath.split("sources")[1]
 
 										found.append(f)
 

@@ -7,8 +7,8 @@ interface IProps {
 
 function Table({ children, column }: IProps) {
     return (
-        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <table className="w-full text-sm text-left text-gray-400">
+            <thead className="text-xs uppercase bg-gray-700 text-gray-400">
                 <tr>
                     {column.map((item, index) => {
                         return (

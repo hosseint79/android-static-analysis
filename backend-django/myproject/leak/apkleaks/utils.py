@@ -15,6 +15,7 @@ class util:
 
 	@staticmethod
 	def finder(pattern, path):
+		print(pattern)
 		matcher = re.compile(pattern)
 		found = []
 		for fp, _, files in os.walk(path):

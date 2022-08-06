@@ -6,9 +6,12 @@ import { AccardionItem } from '../../../components/Accardion/Accardion';
 import { Table } from '../../../components/common/Table/Table';
 import { Layout } from '../../../components/Layout/Layout';
 import ReactPaginate from 'react-paginate';
+import { Modal } from '../../../components/common/Modal/Modal';
 
 
 function Page() {
+    const [modal, setModal] = useState(false);
+
     // We start with an empty list of items.
     const [pageCount, setPageCount] = useState(0);
 
@@ -45,6 +48,17 @@ function Page() {
     const column = ['نام', 'آدرس فایل', 'حساسیت', 'عملیات'];
     return (
         <Layout>
+            <button onClick={() => {
+                setModal(true)
+            }} className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" data-modal-toggle="true">
+            Toggle modal
+            </button>
+            <Modal open={modal} setModal={setModal}>
+                <span>
+                    test children
+                </span>
+            </Modal>
+
             <div className="bg-[#16151C] min-h-screen">
                 {
                     loading ?

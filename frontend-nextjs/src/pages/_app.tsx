@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return <>
-  <ToastContainer />
+  <ToastContainer style={{direction:"rtl"}}/>
   <Component {...pageProps} />
   </> 
 

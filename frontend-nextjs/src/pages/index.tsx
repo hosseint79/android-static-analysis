@@ -25,6 +25,10 @@ const Home: NextPage = () => {
 
 
   async function handleClick(){
+    if(!acceptedFiles[0]) {
+      toast("فایلی انتخاب نشده")
+      return 
+    }
     setLoading(true)
     const data = new FormData()
     data.append("file",acceptedFiles[0])
@@ -39,11 +43,10 @@ const Home: NextPage = () => {
 
     setLoading(false)
   }
-  const notify = () => toast("Wow so easy!");
+
 
   return (
     <div className=' min-h-screen bg-[#110F1C]  flex items-center justify-center'>
-      <div className='text-white' onClick={notify}>clic</div>
       <div className='w-2/4 rounded-md'>
         <div className='cursor-pointer'>
           <div {...getRootProps({ className: 'border-2 bg-[#374151] text-white border-[#ccc] border-dashed px-20 py-24 rounded-md flex items-center flex-col' })}>

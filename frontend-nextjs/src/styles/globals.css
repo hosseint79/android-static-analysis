@@ -12,6 +12,11 @@ html{
     font-family: iranYekan;
 }
 
+.Toastify__toast-body{
+    direction: rtl;
+    font-family: iranYekan;
+}
+
 .loader {
     width: 25px;
     height: 25px;

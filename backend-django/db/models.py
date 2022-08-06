@@ -12,3 +12,4 @@ class Rule(models.Model):
     description= models.CharField(null=True,max_length=500)
     severity= models.CharField(null=True,max_length=100)
     Regex=models.CharField(null=True,max_length=700)
+    persianTitle= models.CharField(max_length=500,default="")

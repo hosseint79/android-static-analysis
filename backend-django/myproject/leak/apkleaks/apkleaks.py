@@ -8,6 +8,7 @@ import shutil
 import sys
 import tempfile
 import threading
+from  db.models import  Rule
 
 from contextlib import closing
 from distutils.spawn import find_executable
@@ -119,24 +120,34 @@ class APKLeaks:
 		if self.apk is None:
 			sys.exit(util.writeln("** Undefined package. Exit!", col.FAIL))
 		util.writeln("\n** Scanning against '%s'" % (self.apk.package), col.OKBLUE)
+		
 		self.out_json["package"] = self.apk.package
 		self.out_json["results"] = []
-		with open(self.pattern) as regexes:
-			regex = json.load(regexes)
-			for name, pattern in regex.items():
-				if isinstance(pattern,list):
-					for p in pattern:
-						try:
-							thread = threading.Thread(target = self.extract, args = (name, util.finder(p, self.tempdir)))
-							thread.start()
-						except KeyboardInterrupt:
-							sys.exit(util.writeln("\n** Interrupted. Aborting...", col.FAIL))
-				else:
-					try:
-						thread = threading.Thread(target = self.extract, args = (name, util.finder(pattern, self.tempdir)))
-						thread.start()
-					except KeyboardInterrupt:
-						sys.exit(util.writeln("\n** Interrupted. Aborting...", col.FAIL))
+
+
+		rules = Rule.objects.all()
+		for rule in rules :
+			try:
+				thread = threading.Thread(target = self.extract, args = (rule.title, util.finder(rule.Regex, self.tempdir)))
+				thread.start()
+			except KeyboardInterrupt:
+				sys.exit(util.writeln("\n** Interrupted. Aborting...", col.FAIL))
+
+			# regex = json.load(regexes)
+			# for name, pattern in regex.items():
+			# 	if isinstance(pattern,list):
+			# 		for p in pattern:
+			# 			try:
+			# 				thread = threading.Thread(target = self.extract, args = (name, util.finder(p, self.tempdir)))
+			# 				thread.start()
+			# 			except KeyboardInterrupt:
+			# 				sys.exit(util.writeln("\n** Interrupted. Aborting...", col.FAIL))
+			# 	else:
+			# 		try:
+			# 			thread = threading.Thread(target = self.extract, args = (name, util.finder(pattern, self.tempdir)))
+			# 			thread.start()
+			# 		except KeyboardInterrupt:
+			# 			sys.exit(util.writeln("\n** Interrupted. Aborting...", col.FAIL))
 		
 
 	def cleanup(self):

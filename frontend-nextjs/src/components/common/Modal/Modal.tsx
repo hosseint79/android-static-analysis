@@ -13,21 +13,23 @@ function Modal({children,open,setModal}:IProps) {
         setModal(false)
     }   
 
+    function preventClose(e:React.MouseEvent<HTMLDivElement, MouseEvent>){
+        e.stopPropagation()
+    }
+
     return (
+        <>
         <div
             onClick={closeModal}
-            id="defaultModal"
-            tabIndex={-1}
-            aria-hidden="true"
-            className={`flex justify-center items-center overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full 
+            className={`flex bg-[#0f0f0fc8] justify-center items-center overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full 
                         ${open ? "opacity-100 visible" : "invisible opacity-0"}`
                       }
         >
             <div
-                onClick={(e) => e.stopPropagation()}
-                className={`relative transition-all duration-500 p-4 w-full max-w-2xl h-full md:h-auto ${open ? "top-0" : "top-12"}`}
+                onClick={preventClose}
+                className={`relative  transition-all duration-500 p-4 w-full max-w-2xl h-full md:h-auto ${open ? "top-0" : "top-12"}`}
             >
-                <div className="relative rounded-lg shadow bg-gray-500">
+                <div className="relative rounded-lg shadow z-60 bg-gray-200 ">
                     <div className="flex justify-between items-start p-4 rounded-t border-b border-gray-600">
                         
                         <button
@@ -44,6 +46,7 @@ function Modal({children,open,setModal}:IProps) {
                 </div>
             </div>
         </div>
+        </>
     );
 }
 

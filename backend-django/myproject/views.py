@@ -67,6 +67,8 @@ def scan_details(request):
                     temp["description"] = rule.description
                     temp["severity"] =  rule.severity    
                     temp["name"] =  item["name"]  
+                    temp["persianTitle"] =  rule.persianTitle
+
 
             newarr.append(temp)
 

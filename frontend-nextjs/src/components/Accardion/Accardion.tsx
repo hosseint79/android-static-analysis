@@ -18,6 +18,10 @@ const AccardionItem = ({ title, children }: any) => {
                     type="button"
                     className=" px-5 rounded-lg flex items-center justify-between w-full py-5 font-medium text-left text border mb-3 bg-[#374151] hover:bg-gray-800 border-gray-700 text-gray-400"
                 >
+
+                    <span>
+                        {title}
+                    </span>
                     <svg
                         className={`w-6 h-6 shrink-0 ${
                             open ? 'rotate-180' : 'rotate-0'
@@ -32,9 +36,6 @@ const AccardionItem = ({ title, children }: any) => {
                             clip-rule="evenodd"
                         ></path>
                     </svg>
-                    <span>
-                        {title}
-                    </span>
                 </button>
             </h2>
             <div

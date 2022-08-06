@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { groupBy } from 'lodash';
 import { AccardionItem } from '../../../components/Accardion/Accardion';
 import { Table } from '../../../components/common/Table/Table';
@@ -9,11 +9,16 @@ import ReactPaginate from 'react-paginate';
 import { Modal } from '../../../components/common/Modal/Modal';
 import { FiMoreHorizontal } from 'react-icons/fi';
 import { Badge } from '../../../components/common/Badge/Badge';
-
+import config from "../../../config.json"
 
 function ModalContent({modalData}:{modalData:any}){
-    return <div className='p-5'>
-        {modalData?.severity}
+    return <div className='p-7'>
+        <span className='font-bold'>
+            {modalData?.persianTitle}  <Badge title={modalData?.severity} type={modalData?.severity}/>
+        </span>
+        <p className='mt-4'>
+            {modalData?.description}
+        </p>
     </div>
 } 
 
@@ -35,7 +40,7 @@ function Page() {
     async function getDataUseEffect(page=1) {
         setLoading(true)
         const serverData = await axios.get(
-            `http://127.0.0.1:8000/scan-detail?page=${page}&step=${200}&id=${id}`
+            `${config.baseurl}scan-detail?page=${page}&step=${200}&id=${id}`
         );
         setData(serverData.data.result);
         setPageCount(serverData.data.pageCount)
@@ -88,7 +93,7 @@ function Page() {
                                                         </td>
                                                         <td className="py-4 px-6 text-start">
                                                             
-                                                            <Badge title={match.severity} type={match.severity}/>
+                                                            <Badge title={match?.severity} type={match?.severity}/>
                                                         </td>
                                                         <td className="py-4 px-6 text-start" onClick={() => {
                                                             setModalData(match)

@@ -21,6 +21,12 @@ from pyaxmlparser import APK
 
 from myproject.leak.apkleaks.colors import color as col
 from myproject.leak.apkleaks.utils import util
+from pathlib import Path
+
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 class APKLeaks:
 	def __init__(self, fileName):
@@ -29,7 +35,7 @@ class APKLeaks:
 		self.json = True
 		self.disarg = None
 		self.prefix = "apkleaks-"
-		self.tempdir = tempfile.mkdtemp(prefix=self.prefix)
+		self.tempdir = os.path.join(BASE_DIR,"tempfiles")
 		self.main_dir = os.path.dirname(os.path.realpath(__file__))
 		self.output = tempfile.mkstemp(suffix=".%s" % ("json" if self.json else "txt"), prefix=self.prefix)[1] if None is None else None
 		self.fileout = open(self.output, "%s" % ("w" if self.json else "a"))
@@ -96,6 +102,7 @@ class APKLeaks:
 			pass
 		comm = "%s" % (" ".join(quote(arg) for arg in args))
 		comm = comm.replace("\'","\"")
+		print("comm",comm)
 		os.system(comm)
 
 	def extract(self, name, matches):

@@ -4,6 +4,7 @@ import axios from "axios"
 import {useDropzone} from 'react-dropzone';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
+import config from "../config.json"
 
 const Home: NextPage = () => {
   const [loading,setLoading] = useState(false)
@@ -34,8 +35,8 @@ const Home: NextPage = () => {
     data.append("file",acceptedFiles[0])
     
     try {
-      const result = await axios.post("http://127.0.0.1:8000/upload/",data)  
-      const scanResult = await axios.get("http://127.0.0.1:8000/scan?fileName=" + result.data.fileName)
+      const result = await axios.post( config.baseurl+"upload/",data)  
+      const scanResult = await axios.get(config.baseurl+"scan?fileName=" + result.data.fileName)
       router.push("/panel/project/"+scanResult.data.result)
     } catch (error) {
       

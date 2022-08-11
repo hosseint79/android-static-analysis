@@ -17,6 +17,9 @@ function ModalContent({modalData}:{modalData:any}){
             {modalData?.persianTitle}  <Badge title={modalData?.severity} type={modalData?.severity}/>
         </span>
         <p className='mt-4'>
+            مقدار :  {modalData?.value} 
+        </p>
+        <p className='mt-4'>
             {modalData?.description}
         </p>
     </div>

@@ -61,10 +61,14 @@ const Home: NextPage = () => {
           <h4>Accepted files</h4>
           <ul>{acceptedFileItems}</ul>
         </aside>
-        <div className='flex justify-end w-full mt-4'>
+        <div className='flex flex-row-reverse justify-end w-full mt-4'>
 
-        <button disabled={loading} onClick={handleClick} type="button" className="text-white flex bg-blue-800 opacity-90 focus:ring-1 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
+        <button disabled={loading} onClick={handleClick} type="button" className="text-white flex  bg-blue-800 opacity-90 focus:ring-1 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
+
           {
+            loading ? "درحال بررسی ..." :"شروع بررسی"
+          }
+                  {
             loading &&  <div className="loader">
             <div className="face">
               <div className="circle"></div>
@@ -74,10 +78,6 @@ const Home: NextPage = () => {
             </div>
           </div>
           }
-          {
-            loading ? " ... درحال بررسی" :"شروع بررسی"
-          }
-        
         </button>
 
         </div>

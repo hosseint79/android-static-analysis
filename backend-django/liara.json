@@ -1,0 +1,16 @@
+{
+    "disks":[
+        {
+            "name":"files",
+            "mountTo":"files"
+        },
+        {
+            "name":"tempfiles",
+            "mountTo":"myproject/leak/tempfiles"
+        },
+        {
+            "name":"tempfiles",
+            "mountTo":"data"
+        }  
+    ]
+}

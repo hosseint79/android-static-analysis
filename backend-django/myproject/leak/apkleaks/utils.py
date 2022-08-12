@@ -21,7 +21,7 @@ class util:
 		for fp, _, files in os.walk(path):
 				for fn in files:
 					filepath = os.path.join(fp, fn)
-					if "\sources" in filepath :
+					if "\sources" in filepath or "/sources" in filepath:
 
 						with open(filepath) as handle:
 							try:

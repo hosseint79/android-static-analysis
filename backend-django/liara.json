@@ -1,16 +1,22 @@
 {
+    "platform": "docker",
+    "port": 8000,
     "disks":[
         {
             "name":"files",
-            "mountTo":"files"
+            "mountTo":"/code/files"
         },
         {
             "name":"tempfiles",
-            "mountTo":"myproject/leak/tempfiles"
+            "mountTo":"/code/tempfiles"
         },
         {
-            "name":"tempfiles",
-            "mountTo":"data"
+            "name":"database",
+            "mountTo":"/code/data"
+        } , 
+        {
+            "name":"jadx",
+            "mountTo":"/code/myproject/leak/jadx/bin/"
         }  
     ]
 }

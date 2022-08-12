@@ -1,6 +1,6 @@
 from unittest import result
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import HttpRequest, HttpResponse , JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.core.files.storage import FileSystemStorage
 from myproject.leak.apkleaks.cli import main
@@ -40,6 +40,7 @@ def scan(request):
 
     return JsonResponse({
         "result":createResult.id,
+        "s":scanResult
     })
 
 

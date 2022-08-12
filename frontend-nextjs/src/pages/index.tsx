@@ -63,7 +63,7 @@ const Home: NextPage = () => {
         </aside>
         <div className='flex flex-row-reverse justify-end w-full mt-4'>
 
-        <button disabled={loading} onClick={handleClick} type="button" className="text-white flex  bg-blue-800 opacity-90 focus:ring-1 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
+        <button disabled={loading} onClick={handleClick} type="button" className="text-white flex  bg-teal-700 opacity-90 focus:ring-1 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
 
           {
             loading ? "درحال بررسی ..." :"شروع بررسی"

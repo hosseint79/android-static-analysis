@@ -5,7 +5,9 @@ class Project(models.Model):
     createDate= models.DateField(null=True)
     description= models.CharField(null=True,max_length=500)
     problemsList= models.JSONField(null=True)
+    appInfo= models.JSONField(null=True)
     fileName=models.CharField(null=True,max_length=200)
+
 
 class Rule(models.Model):
     title= models.CharField(max_length=500)

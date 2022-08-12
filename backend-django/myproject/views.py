@@ -1,3 +1,4 @@
+from datetime import datetime
 from unittest import result
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse , JsonResponse
@@ -35,12 +36,13 @@ def scan(request):
 
     createResult = Project.objects.create(
         fileName= request.GET.get("fileName"),
-        problemsList=  scanResult
+        problemsList= scanResult[0],
+        appInfo=scanResult[1],
+        createDate=datetime.today().strftime('%Y-%m-%d')
     )
 
     return JsonResponse({
         "result":createResult.id,
-        "s":scanResult
     })
 
 
@@ -78,5 +80,7 @@ def scan_details(request):
 
     return JsonResponse({
         "result":p.page(page).object_list,
-        "pageCount": p.num_pages
+        "pageCount": p.num_pages,
+        "appInfo":getData.appInfo,
+        "createDate":getData.createDate
     })

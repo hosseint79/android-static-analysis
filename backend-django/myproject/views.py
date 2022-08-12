@@ -8,6 +8,7 @@ from myproject.leak.apkleaks.cli import main
 from  db.models import Project, Rule
 import json
 from django.core.paginator import Paginator
+from django.core import serializers
 
 @csrf_exempt 
 def upload_file(request):
@@ -45,7 +46,22 @@ def scan(request):
         "result":createResult.id,
     })
 
+@csrf_exempt 
+def project_list(request):
 
+    allProject = Project.objects.all().values()
+    return JsonResponse({
+        "result":list(allProject),
+    })
+
+@csrf_exempt 
+def rules_list(request):
+
+    allRules = Rule.objects.all().values()
+
+    return JsonResponse({
+        "result":list(allRules),
+    })
 
 @csrf_exempt 
 def scan_details(request):

@@ -118,9 +118,7 @@ class APKLeaks:
 		androidData["receivers"] = self.apk.get_receivers()
 		androidData["get_filename"] = self.fileName
 
+		# apkf = APK("myfile.apk")
+    	# apkf = APK(read("myfile.apk"), raw=True)
 
-
-
-
-		
 		return [self.out_json,androidData]

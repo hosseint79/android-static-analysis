@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import {FiBox, FiHome} from "react-icons/fi"
+import {FiBox, FiHome, FiUploadCloud} from "react-icons/fi"
 
 interface IProps {
     children:React.ReactNode
@@ -20,7 +20,7 @@ function Layout({children}:IProps) {
                     <ul className="space-y-2">
                         <li>
                             <Link
-                                href="/panel/project"
+                                href="/panel/projects"
                            
                             >
                             <div className="flex cursor-pointer items-center p-2 text-base font-normal rounded-lg hover:bg-gray-700">
@@ -53,7 +53,10 @@ function Layout({children}:IProps) {
             <div className="flex flex-col w-4/5">
                 <div className="px-4 py-6">
                     <div className="h-16 bg-[#1F1E26] w-full px-4 flex items-center rounded-md ">
-                        <Link href="/"><FiHome  color="white" className="w-10 mr-auto rounded-lg h-10 cursor-pointer p-2 hover:bg-gray-700"/></Link>
+                    <Link href="/panel/projects"><FiHome  color="white" className="w-10 rounded-lg h-10 cursor-pointer p-2 hover:bg-gray-700"/></Link>
+                        
+                        <Link href="/"><FiUploadCloud  color="white" className="w-10 mr-auto rounded-lg h-10 cursor-pointer p-2 hover:bg-gray-700"/></Link>
+                    
                     </div>
                 </div>
 

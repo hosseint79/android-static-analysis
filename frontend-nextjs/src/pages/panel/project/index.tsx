@@ -43,12 +43,12 @@ function Page(){
                 {data.map((match: any) => {
                     return (
                         <tr className="border-b 00 bg-gray-800 border-gray-700">
-                            <th
+                            <td
                                 scope="row"
                                 className="py-4 px-6 text-start font-medium whitespace-nowrap text-white"
                             >
                                 {match.appInfo?.app_name}
-                            </th>
+                            </td>
                             <td className="py-4 px-6 text-start">
                 {match.appInfo?.androidversion_name}
 

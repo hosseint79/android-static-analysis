@@ -100,3 +100,12 @@ def scan_details(request):
         "appInfo":getData.appInfo,
         "createDate":getData.createDate
     })
+
+@csrf_exempt 
+def app_info(request):
+    getData = Project.objects.get(id=request.GET.get("id"))
+
+    return JsonResponse({
+        "appInfo":getData.appInfo,
+        "createDate":getData.createDate
+    })

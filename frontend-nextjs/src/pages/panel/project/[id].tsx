@@ -10,6 +10,7 @@ import { Modal } from '../../../components/common/Modal/Modal';
 import { FiMoreHorizontal } from 'react-icons/fi';
 import { Badge } from '../../../components/common/Badge/Badge';
 import config from "../../../config.json"
+import { ProjectDetailLayout } from '../../../components/Layout/ProjectDetailLayout/ProjectDetailLayout';
 
 function ModalContent({modalData}:{modalData:any}){
     return <div className='p-7'>
@@ -63,7 +64,7 @@ function Page() {
     let final = groupBy(data, 'persianTitle');
     const column = ['نام', 'آدرس فایل', 'حساسیت', 'عملیات'];
     return (
-        <Layout>
+        <ProjectDetailLayout>
 
             <Modal open={modal} setModal={setModal}>
                 <ModalContent modalData={modalData}/>
@@ -136,7 +137,7 @@ function Page() {
             </div>
 
 
-        </Layout>
+        </ProjectDetailLayout>
     );
 }
 

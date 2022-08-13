@@ -37,7 +37,7 @@ const Home: NextPage = () => {
     try {
       const result = await axios.post( config.baseurl+"upload/",data)  
       const scanResult = await axios.get(config.baseurl+"scan?fileName=" + result.data.fileName)
-      router.push("/panel/project/"+scanResult.data.result)
+      router.push("/panel/projects/appinfo/"+scanResult.data.result)
     } catch (error) {
       
     }

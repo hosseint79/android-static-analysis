@@ -22,6 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
 
 class APKLeaks:
 	def __init__(self, fileName):
+		self.fileName = fileName
 		self.apk = None
 		self.disarg = None
 		self.out_json = {}
@@ -111,8 +112,15 @@ class APKLeaks:
 		androidData["libraries"] = self.apk.get_libraries()
 		androidData["activities"] = self.apk.get_activities()
 		androidData["permissions"] = self.apk.get_permissions()
+		androidData["get_signatures"] = self.apk.get_signature_names()
 		androidData["androidversion_code"] = self.apk.get_androidversion_code()
 		androidData["androidversion_name"] = self.apk.get_androidversion_name()
 		androidData["receivers"] = self.apk.get_receivers()
+		androidData["get_filename"] = self.fileName
+
+
+
+
+
 		
 		return [self.out_json,androidData]

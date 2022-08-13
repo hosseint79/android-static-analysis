@@ -19,29 +19,32 @@ function Layout({children}:IProps) {
                 <div className="overflow-y-auto py-4 px-3 h-screen  ">
                     <ul className="space-y-2">
                         <li>
-                            <a
-                                href="#"
-                                className="flex items-center p-2 text-base font-normal rounded-lg hover:bg-gray-700"
+                            <Link
+                                href="/panel/project"
+                           
                             >
-                                <FiBox className="text-emerald-700" size={23}/>
+                            <div className="flex cursor-pointer items-center p-2 text-base font-normal rounded-lg hover:bg-gray-700">
+                                <FiBox className ="text-emerald-700" size={23}/>
 
                                 <span className="flex mr-3 items-center text-base text-emerald-600 font-bold">
                                     پروژه ها
                                 </span>
-                            </a>
+                            </div>
+                            </Link>
                         </li>
 
                         <li>
-                            <a
-                                href="#"
-                                className="flex items-center p-2 text-base font-normal rounded-lg hover:bg-gray-700"
-                            >
+                            <Link
+                                href="/panel/rules"
+                          
+                                
+                            ><div className="flex cursor-pointer items-center p-2 text-base font-normal rounded-lg hover:bg-gray-700">
                                 <FiBox className="text-white" size={23}/>
 
                                 <span className="flex mr-3 items-center text-base text-white">
                                     لیست اسیب ها
-                                </span>
-                            </a>
+                                </span></div>
+                            </Link>
                         </li>
                     </ul>
                 </div>

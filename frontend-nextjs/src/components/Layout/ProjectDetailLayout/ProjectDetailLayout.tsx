@@ -44,8 +44,8 @@ function ProjectDetailLayout({children}:IProps) {
                 <div className="overflow-y-auto py-4 px-3 h-screen  ">
                     <ul className="space-y-2">
                         {
-                            sidebarItems.map((item) => {
-                                return  <li>
+                            sidebarItems.map((item,index) => {
+                                return  <li key={index}>
                                 <Link
                                     href={item.href + router.query.id}   
                                

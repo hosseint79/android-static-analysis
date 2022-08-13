@@ -40,9 +40,9 @@ function Page(){
         <div className="min-h-screen">
         <Table column={column}>
             <>
-                {data.map((match: any) => {
+                {data.map((match: any,index:number) => {
                     return (
-                        <tr className="border-b 00 bg-gray-800 border-gray-700">
+                        <tr key={index} className="border-b 00 bg-gray-800 border-gray-700">
                             <td
                                 scope="row"
                                 className="py-4 px-6 text-start font-medium whitespace-nowrap text-white"
@@ -50,7 +50,7 @@ function Page(){
                                 {match.appInfo?.app_name}
                             </td>
                             <td className="py-4 px-6 text-start">
-                {match.appInfo?.androidversion_name}
+                                {match.appInfo?.androidversion_name}
 
                             </td>
                             <td className="py-4 px-6 text-start">

@@ -18,8 +18,11 @@ const Home: NextPage = () => {
 
   const acceptedFileItems = acceptedFiles.map((file:any) => (
     <li key={file.path} className="py-3 px-5 rounded-md bg-slate-300">
-      {file.path} - <span className='text-orange-500'>
-       ( {file.size} bytes )
+      {file.path}  
+      <span className="text-orange-500">
+       <span>
+        {file.size} bytes 
+       </span>
       </span>
     </li>
   ));
@@ -52,7 +55,7 @@ const Home: NextPage = () => {
         <div className='cursor-pointer'>
           <div {...getRootProps({ className: 'border-2 bg-[#374151] text-white border-[#ccc] border-dashed px-20 py-24 rounded-md flex items-center flex-col' })}>
             <input {...getInputProps()} />
-            <p>Drag 'n' drop some files here, or click to select files</p>
+            <p>Drag n drop some files here, or click to select files</p>
             <em>(Only *.apk will be accepted)</em>
           </div>
         </div>
@@ -62,7 +65,6 @@ const Home: NextPage = () => {
           <ul>{acceptedFileItems}</ul>
         </aside>
         <div className='flex flex-row-reverse justify-end w-full mt-4'>
-
         <button disabled={loading} onClick={handleClick} type="button" className="text-white flex  bg-teal-700 opacity-90 focus:ring-1 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
 
           {

@@ -7,7 +7,9 @@ interface IProps {
 
 function Table({ children, column }: IProps) {
     return (
-        <table className="w-full text-sm text-left text-gray-400" style={{direction:"rtl"}}>
+        <div className='overflow-x-auto'>
+
+        <table className="w-full text-sm  text-left text-gray-400" style={{direction:"rtl"}}>
             <thead className="text-xs uppercase bg-gray-700 text-gray-400">
                 <tr>
                     {column.map((item, index) => {
@@ -20,7 +22,9 @@ function Table({ children, column }: IProps) {
                 </tr>
             </thead>
             <tbody>{children}</tbody>
-        </table>
+        </table>            
+        </div>
+
     );
 }
 

@@ -18,7 +18,7 @@ const Home: NextPage = () => {
 
   const acceptedFileItems = acceptedFiles.map((file:any) => (
     <li key={file.path} className="py-3 px-5 rounded-md bg-slate-300">
-      {file.path}  -  
+      {file.path}  -  {" "}
       <span className="text-orange-500">
        <span>
         ( {file.size} bytes )

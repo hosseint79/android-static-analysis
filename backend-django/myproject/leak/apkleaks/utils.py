@@ -39,4 +39,24 @@ class util:
 							except Exception:
 								pass
 		# return sorted(list(set(found)))
-		return found
+
+
+		finall = []
+
+		def listhaveObject(item):
+			t = False
+			for i in finall :
+				if i["path"] == item["path"] :
+					t = True
+			return t
+
+		for item in found:
+			check = listhaveObject(item)
+
+			if not check :
+				finall.append(item)
+			
+		print("found",found)
+		print("sorted(list(set(found)))",finall)
+
+		return finall

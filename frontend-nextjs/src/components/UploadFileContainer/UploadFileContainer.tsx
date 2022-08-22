@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import config from '../../config.json';
 import axios from 'axios';
+import { PaddingWrapper } from '../common/PaddingWrapper/PaddingWrapper';
 
 function UploadFileContainer() {
     const [loading, setLoading] = useState(false);
@@ -43,48 +44,49 @@ function UploadFileContainer() {
     }
 
     return (
-        <div className=" min-h-screen bg-[#110F1C]  flex items-center justify-center">
-            <div className="w-2/4 rounded-md">
-                <div className="cursor-pointer">
-                    <div
-                        {...getRootProps({
-                            className:
-                                'border-2 bg-[#374151] text-white border-[#ccc] border-dashed px-20 py-24 rounded-md flex items-center flex-col',
-                        })}
-                    >
-                        <input {...getInputProps()} />
-                        <p>
-                            Drag n drop some files here, or click to select
-                            files
-                        </p>
-                        <em>(Only *.apk will be accepted)</em>
+        <div className="min-h-screen bg-[#110F1C]  flex items-center justify-center">
+            <div className="w-full lg:w-2/4 rounded-md">
+                <PaddingWrapper>
+                    <div className="cursor-pointer">
+                        <div
+                            {...getRootProps({
+                                className:
+                                    'border-2 bg-[#374151] text-white border-[#ccc] border-dashed lg:px-20 py-20 lg:py-24 rounded-md flex items-center flex-col',
+                            })}
+                        >
+                            <input {...getInputProps()} />
+                            <p className="text-center">
+                                Drag n drop some files here, or click to select
+                                files
+                            </p>
+                            <em>(Only *.apk will be accepted)</em>
+                        </div>
                     </div>
-                </div>
-
-                <aside>
-                    <h4>Accepted files</h4>
-                    <ul>{acceptedFileItems}</ul>
-                </aside>
-                <div className="flex flex-row-reverse justify-end w-full mt-4">
-                    <button
-                        disabled={loading}
-                        onClick={handleClick}
-                        type="button"
-                        className="text-white flex  bg-teal-700 opacity-90 focus:ring-1 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5"
-                    >
-                        {loading ? 'درحال بررسی ...' : 'شروع بررسی'}
-                        {loading && (
-                            <div className="loader">
-                                <div className="face">
-                                    <div className="circle"></div>
+                    <aside>
+                        <h4>Accepted files</h4>
+                        <ul>{acceptedFileItems}</ul>
+                    </aside>
+                    <div className="flex flex-row-reverse justify-end w-full mt-4">
+                        <button
+                            disabled={loading}
+                            onClick={handleClick}
+                            type="button"
+                            className="text-white flex  bg-teal-700 opacity-90 focus:ring-1 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5"
+                        >
+                            {loading ? 'درحال بررسی ...' : 'شروع بررسی'}
+                            {loading && (
+                                <div className="loader">
+                                    <div className="face">
+                                        <div className="circle"></div>
+                                    </div>
+                                    <div className="face">
+                                        <div className="circle"></div>
+                                    </div>
                                 </div>
-                                <div className="face">
-                                    <div className="circle"></div>
-                                </div>
-                            </div>
-                        )}
-                    </button>
-                </div>
+                            )}
+                        </button>
+                    </div>
+                </PaddingWrapper>
             </div>
         </div>
     );

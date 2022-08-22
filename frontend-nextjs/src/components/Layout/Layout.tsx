@@ -10,12 +10,12 @@ interface IProps {
 
 const sidebarData = [
     {
-        href: '/panel/projects/',
+        href: '/panel/projects',
         Icon: FiBox,
         title: 'پروژه ها',
     },
     {
-        href: '/panel/rules/',
+        href: '/panel/rules',
         Icon: FiBox,
         title: ' آسیب پذیری ها',
     },
@@ -102,7 +102,7 @@ function Layout({ children }: IProps) {
 
             <div className=" flex-col w-full lg:w-4/5 ">
                 <div className="px-4 py-6">
-                    <div className="h-16 bg-[#1F1E26] w-full px-4 flex items-center rounded-md ">
+                    <div className="h-16 justify-between bg-[#1F1E26] w-full px-4 flex items-center rounded-md ">
                         <div
                             className="block lg:hidden ml-auto"
                             onClick={() => {
@@ -117,11 +117,10 @@ function Layout({ children }: IProps) {
                                 className="w-10 rounded-lg h-10 cursor-pointer p-2 hover:bg-gray-700"
                             />
                         </Link>
-
                         <Link href="/">
                             <FiUploadCloud
                                 color="white"
-                                className="w-10 mr-auto rounded-lg h-10 cursor-pointer p-2 hover:bg-gray-700"
+                                className="w-10 rounded-lg h-10 cursor-pointer p-2 hover:bg-gray-700"
                             />
                         </Link>
                     </div>

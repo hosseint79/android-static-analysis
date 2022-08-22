@@ -5,11 +5,27 @@ import { useEffect, useState } from 'react';
 import { Layout } from '../../../components/Layout/Layout';
 import { Badge } from '../../../components/common/Badge/Badge';
 import { Table } from '../../../components/common/Table/Table';
+import { Modal } from '../../../components/common/Modal/Modal';
+import { FiMoreHorizontal } from 'react-icons/fi';
 
 const column = ['عنوان', 'حساسیت', 'توضیحات', 'عملیات'];
 
+function ModalContent({ modalData }: { modalData: any }) {
+    return (
+        <div className="p-7">
+            <span> توضیحات : </span>
+            <br />
+            <p className="mt-4">{modalData?.description}</p>
+        </div>
+    );
+}
+
 function Page() {
     const router = useRouter();
+
+    const [modal, setModal] = useState(false);
+    const [modalData, setModalData] = useState();
+
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
 
@@ -28,6 +44,9 @@ function Page() {
     return (
         <Layout>
             <div className="min-h-screen">
+                <Modal open={modal} setModal={setModal}>
+                    <ModalContent modalData={modalData} />
+                </Modal>
                 {loading ? (
                     <div className="flex justify-center items-center h-80">
                         <div className="w-9 h-9 border-t border-b border-emerald-600 animate-spin rounded-full" />
@@ -45,7 +64,10 @@ function Page() {
                                             scope="row"
                                             className="py-4 px-6 text-start font-medium whitespace-nowrap text-white"
                                         >
-                                            {match?.persianTitle}
+                                            {match?.persianTitle.replace(
+                                                /(.{60})..+/,
+                                                '$1…'
+                                            )}
                                         </td>
                                         <td
                                             scope="row"
@@ -66,10 +88,13 @@ function Page() {
                                             )}
                                         </td>
                                         <td
-                                            scope="row"
-                                            className="py-4 px-6 text-start font-medium whitespace-nowrap text-white"
+                                            className="py-4 px-6 text-start"
+                                            onClick={() => {
+                                                setModalData(match);
+                                                setModal(true);
+                                            }}
                                         >
-                                            ...
+                                            <FiMoreHorizontal className="rounded-full transition-all cursor-pointer duration-300 text-teal-700 hover:bg-emerald-100 w-9 h-9 p-2" />
                                         </td>
                                     </tr>
                                 );

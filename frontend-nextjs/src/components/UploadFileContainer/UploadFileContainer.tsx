@@ -5,6 +5,8 @@ import { toast } from 'react-toastify';
 import config from '../../config.json';
 import axios from 'axios';
 import { PaddingWrapper } from '../common/PaddingWrapper/PaddingWrapper';
+import { FiHome, FiUploadCloud } from 'react-icons/fi';
+import Link from 'next/link';
 
 function UploadFileContainer() {
     const [loading, setLoading] = useState(false);
@@ -44,8 +46,24 @@ function UploadFileContainer() {
     }
 
     return (
-        <div className="min-h-screen bg-[#110F1C]  flex items-center justify-center">
-            <div className="w-full lg:w-2/4 rounded-md">
+        <div className="min-h-screen bg-[#110F1C] flex flex-col items-center ">
+            <div className=" flex-col w-full lg:w-11/12 ">
+                <div className="px-4 py-6">
+                    <div className="h-16 justify-between bg-[#1d1c23] w-full px-6 flex items-center rounded-xl ">
+                        <Link href="/panel/projects">
+                            <span className="font-semibold  cursor-pointer py-2 px-4 rounded-lg duration-300 hover:bg-teal-700 text-zinc-100 text-sm">
+                                پنل کاربری
+                            </span>
+                        </Link>
+                        <a href="http://localhost:8000/admin" target="_blank">
+                            <span className="font-semibold cursor-pointer py-2 px-4 rounded-lg duration-300 hover:bg-teal-700 text-zinc-100 text-sm">
+                                ورود
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div className="w-full lg:w-2/4 rounded-md mt-24">
                 <PaddingWrapper>
                     <div className="cursor-pointer">
                         <div

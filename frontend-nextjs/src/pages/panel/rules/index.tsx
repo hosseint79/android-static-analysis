@@ -2,11 +2,11 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import config from '../../../config.json';
 import { useEffect, useState } from 'react';
+import { FiMoreHorizontal } from 'react-icons/fi';
 import { Layout } from '../../../components/Layout/Layout';
 import { Badge } from '../../../components/common/Badge/Badge';
 import { Table } from '../../../components/common/Table/Table';
 import { Modal } from '../../../components/common/Modal/Modal';
-import { FiMoreHorizontal } from 'react-icons/fi';
 
 const column = ['عنوان', 'حساسیت', 'توضیحات', 'عملیات'];
 

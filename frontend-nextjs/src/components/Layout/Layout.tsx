@@ -8,6 +8,19 @@ interface IProps {
     children: React.ReactNode;
 }
 
+const sidebarData = [
+    {
+        href: '/panel/projects/',
+        Icon: FiBox,
+        title: 'پروژه ها',
+    },
+    {
+        href: '/panel/rules/',
+        Icon: FiBox,
+        title: ' آسیب پذیری ها',
+    },
+];
+
 function Layout({ children }: IProps) {
     const router = useRouter();
     const [open, setOpen] = useState(false);
@@ -115,7 +128,7 @@ function Layout({ children }: IProps) {
                 </div>
 
                 <div className=" p-4 bg-[#16151C]">{children}</div>
-                <Drawer open={open} setOpen={setOpen} />
+                <Drawer open={open} setOpen={setOpen} data={sidebarData} />
             </div>
         </div>
     );

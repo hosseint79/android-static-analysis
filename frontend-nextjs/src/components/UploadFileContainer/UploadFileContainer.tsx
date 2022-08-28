@@ -49,15 +49,17 @@ function UploadFileContainer() {
                     <div
                         {...getRootProps({
                             className:
-                                'border-2 bg-[#374151] text-white border-[#ccc] border-dashed  px-20 py-24 rounded-md flex items-center flex-col',
+                                'border-2 bg-[#374151] text-white border-[#ccc] border-dashed  lg:px-20 py-24 rounded-md flex items-center flex-col',
                         })}
                     >
                         <input {...getInputProps()} />
-                        <p>
+                        <p className="text-center">
                             Drag n drop some files here, or click to select
                             files
                         </p>
-                        <em>(Only *.apk will be accepted)</em>
+                        <em className="text-center mt-2">
+                            (Only *.apk will be accepted)
+                        </em>
                     </div>
                 </div>
 

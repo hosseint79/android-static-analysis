@@ -49,7 +49,7 @@ function UploadFileContainer() {
                     <div
                         {...getRootProps({
                             className:
-                                'border-2 bg-[#374151] text-white border-[#ccc] border-dashed text-center  lg:px-20 py-24 rounded-md flex items-center flex-col',
+                                'border-2 bg-[#374151] text-white border-[#ccc] border-dashed  px-20 py-24 rounded-md flex items-center flex-col',
                         })}
                     >
                         <input {...getInputProps()} />
